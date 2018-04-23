@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CataLog App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+
+  <div class="row" id="titlediv">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+       <h3 id="apptitleName">CatalogApp</h3>
+    </div>
+    <div class="col-sm-4" id="logindetailid">
+      {% if usernamevalue %} 
+        <h4 id="usernamevisible">{{usernamevalue}}</h4>
+        <a href = '{{url_for('gdisconnect') }}' class="btn btn-primary">Logout</a>
+      {% else %}
+      <p id="usernamehidden"></p>
+      {% endif %}
+     </div> 
+  </div>  
+
+      <div class=row>
+         <div class="col-sm-12 divrightadditem">
+            <a href = '{{url_for('NewCreateItem') }}' class="btn btn-primary">Add new Item</a>
+         </div>
+  </div>
+<hr>
+  <div class="row">
+    <div class="col-sm-4">
+      <h2 id="categoryitemheading">Category</h2>
+      <br>
+        {% for i in category %}
+         <p id="categoryval"><a href = '{{url_for('SelectedcategoryItem', category_id = i.id) }}'>{{i.name}}</a></p>
+        {% endfor %}
+        <br>
+    </div>
+   
+    <div class="col-sm-8">
+      <h2 id="menuitemheading">MenuItems</h2>
+      <br>
+       {% for i in dict %}
+       <p id="menuval">
+        <a href='{{url_for('MenuItemdescription',menuitem=i)}}'>{{i}}</a>
+              ({{dict[i]}})</p>
+      {% endfor %}
+    </div>  
+
+
+</div>
+    
+</body>
+</html>
