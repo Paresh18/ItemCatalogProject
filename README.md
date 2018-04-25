@@ -57,6 +57,38 @@ To get the Google login working there are a few additional steps:
 13. Place JSON file in ItemCatalog directory that you cloned from here
 14. Run application using `python /ItemCatalog/webserver.py`
 
+
+## How to use the App
+After running webserver.py,the server will be hosted on http://localhost:3000.
+- At this page you will see the category,and the menuitems related to categories.(logged off)
+- At clicking the category you will be redirected to the http://localhost:3000/category/1/item which will show you items related to particular category(suppose in this case the category is soccer and the id is 1)(logged off)
+- Ar clicking the menuitems you will be redirected to the http://localhost:3000/menuitem/Hockeyballs/description/
+description page of the menuitem,you will not be able to see the "EditItem" and "DeleteItem" as you are not login.(logged off)
+
+Now here I have reduced one step of login separately through a separate login button.
+
+Suppose you have to Add the item you will click the "AddItem" button and it will ask you to login through Google once
+you are sign in you will be redirected to the  http://localhost:3000category/new/ this will add the new menuItem related
+to particular category and after adding you will be redirected to http://localhost:3000 page with all the values entered.
+- Now since you are logged in when you again click on "AddItem" it will redirect you to  http://localhost:3000category/new/
+page and will not ask to login again.
+
+
+### (After login)
+At http://localhost:300 you will see login username and Logout link at the right corner.
+- When you click at MenuItem it will redirect you to http://localhost:3000/menuitem/Hockeyballs/description/ at this page since you are login you are now will see "EditItem" and "DeleteItem" and which you can use to deleteItems and ediitems.
+
+### For public view I have pages
+You will only be able to see the pages and will not have the authority to do anything unless you are loggedin.
+- http://localhost:3000/
+- http://localhost:3000/menuitem/Hockeyballs/description/
+- http://localhost:3000/category/1/item
+
+(After logging in)
+You will have the ability to edit and delete item and add item.
+
+I have implemented all the functionality in a different way and the above described workflow will let you follow it. 
+
 ## JSON Endpoints
 The following are open to the public:
 
